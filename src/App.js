@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import PokemonList from './PokemonList';
-import PokemonDetails from './PokemonDetails';
 import WelcomePage from './WelcomePage';
 import { Container, Row } from 'react-bootstrap';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
@@ -49,8 +48,7 @@ function App() {
         <Row className='main-view justify-content-md-center'>
           <Routes>
             <Route path='/' element={<WelcomePage/>} />
-            <Route path='/pokemon' element={<PokemonList pokemonList={pokemonList} gotoNextPage={gotoNextPage} gotoPrevPage={gotoPrevPage}/>} /> 
-            <Route path='/pokemon/:name' element={<PokemonDetails pokemonList={pokemonList}/>} />
+            <Route path='/pokemon' element={<PokemonList pokemonList={pokemonList} gotoNextPage={gotoNextPage} gotoPrevPage={gotoPrevPage}/>} />
           </Routes>
         </Row>
       </Container>
