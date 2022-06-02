@@ -1,33 +1,35 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { Card, CardGroup} from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 
-export default function PokemonDetails({pokemon}) {
-  const [pokemonName, setPokemonName] = useState()
-  const params= useParams()
+export default function PokemonDetails() {
+  const [pokemonDetails, setPokemonDetails] = useState(null);
+  const {name} = useParams()
+ 
 
   useEffect(() => {
-    const pokemonName = pokemon.find(p=>p.name === params.name)
-    setPokemonName(pokemonName)
-    console.log(pokemonName)
-  
-    
+    // const pokemon = pokemonList.find( p=>p ===params.name);
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`).then(res=>{
+      setPokemonDetails(res.data)
+    })
+      
   }, [])
   
    
-
+if (!pokemonDetails) return <div>loading...</div>
   
     
   return (
     <CardGroup>
       <Card>
+      <Card.Title>
+            Pokemon Ability
+      </Card.Title>
+        
         <Card.Body>
-          <Card.Title>
-            {pokemonName}
-          </Card.Title>
-          
+          <div>{pokemonDetails.base_experience}</div>
         </Card.Body>
       </Card>
     </CardGroup>  

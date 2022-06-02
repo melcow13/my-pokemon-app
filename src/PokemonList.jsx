@@ -1,20 +1,22 @@
 import React from 'react'
-import { Col } from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
 import PokemonCard from './PokemonCard'
 import Pagination from './Pagination'
 
-export default function PokemonList({pokemon, gotoNextPage, gotoPrevPage}) {
+export default function PokemonList({pokemonList, gotoNextPage, gotoPrevPage}) {
   return (
-    <div>
-      {pokemon.map(p=>(
-        <Col key={p}>
-          <PokemonCard pokemon={p}/>
+    <Container>
+      <Row>
+      {pokemonList.map(p=>(
+        <Col key={p} xs={6} md={3} >
+          <PokemonCard pokemonList={p}/>
         </Col>
       ))}
+      </Row>
       <Pagination 
       gotoNextPage={gotoNextPage}
       gotoPrevPage={gotoPrevPage}
       />
-    </div>
+    </Container>
   )
 }

@@ -1,10 +1,11 @@
 import React from 'react'
+import { Button, ButtonGroup } from 'react-bootstrap'
 
 export default function Pagination({gotoNextPage, gotoPrevPage}) {
   return (
-    <div>
-      {gotoPrevPage && <button onClick={gotoPrevPage}>Previous</button>}
-      {gotoNextPage && <button onClick={gotoNextPage}>Next</button>}
-    </div>
+    <ButtonGroup>
+      {gotoPrevPage && <Button variant="warning" size="lg" onClick={gotoPrevPage}>Previous</Button>}
+      {gotoNextPage && <Button variant="danger" size="lg" onClick={gotoNextPage}>Next</Button>}
+    </ButtonGroup>
   )
 }

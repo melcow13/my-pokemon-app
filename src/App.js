@@ -8,10 +8,11 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 
 function App() {
-  const[pokemon, setPokemon]= useState([])
+  const[pokemonList, setPokemonList]= useState([])
   const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon")
-  const [nextPageUrl, setNextPageUrl] = useState();
-  const [prevPageUrl, setPrevPageUrl] = useState();
+  const [nextPageUrl, setNextPageUrl] = useState("");
+  const [prevPageUrl, setPrevPageUrl] = useState("");
+
 
   //loading-by default our application is loading
   const [loading, setLoading]= useState(true)
@@ -24,8 +25,7 @@ function App() {
       setLoading(false)
       setNextPageUrl(res.data.next)
       setPrevPageUrl(res.data.previous)
-      setPokemon(res.data.results.map(p=>p.name))
-      console.log(pokemon)
+      setPokemonList(res.data.results.map(p=>p.name))
       
     })
 
@@ -49,8 +49,8 @@ function App() {
         <Row className='main-view justify-content-md-center'>
           <Routes>
             <Route path='/' element={<WelcomePage/>} />
-            <Route path='/pokemon' element={<PokemonList pokemon={pokemon} gotoNextPage={gotoNextPage} gotoPrevPage={gotoPrevPage}/>} /> 
-            <Route path='/pokemon/:name' element={<PokemonDetails pokemon={pokemon}/>} />
+            <Route path='/pokemon' element={<PokemonList pokemonList={pokemonList} gotoNextPage={gotoNextPage} gotoPrevPage={gotoPrevPage}/>} /> 
+            <Route path='/pokemon/:name' element={<PokemonDetails pokemonList={pokemonList}/>} />
           </Routes>
         </Row>
       </Container>
