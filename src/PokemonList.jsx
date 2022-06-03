@@ -16,7 +16,7 @@ export default function PokemonList({ pokemonList, gotoNextPage, gotoPrevPage })
 
     if (keyword !== '') {
       const results = pokemonList.filter((p) => {
-        return p.toLowerCase().includes(keyword.toLowerCase());
+        return p.toLowerCase().startsWith(keyword.toLowerCase());
         // Use the toLowerCase() method to make it case-insensitive
       });
       setFoundPokemon(results);
