@@ -13,8 +13,10 @@ function App() {
   const [prevPageUrl, setPrevPageUrl] = useState("");
 
 
+
   //loading-by default our application is loading
   const [loading, setLoading] = useState(true)
+  
 
   //every single time when the currentpageurl changes, rerun the code in useEffect
   useEffect(() => {
@@ -31,7 +33,7 @@ function App() {
 
   }, [currentPageUrl])
 
-
+  
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl)
   }
@@ -48,7 +50,7 @@ function App() {
         <Row className='main-view justify-content-md-center'>
           <Routes>
             <Route path='/' element={<WelcomePage />} />
-            <Route path='/pokemon' element={<PokemonList pokemonList={pokemonList} gotoNextPage={gotoNextPage} gotoPrevPage={gotoPrevPage} />} />
+            <Route path='/pokemon' element={<PokemonList pokemonList={pokemonList} gotoNextPage={gotoNextPage} gotoPrevPage={gotoPrevPage}/>} />
           </Routes>
         </Row>
       </Container>
